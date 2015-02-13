@@ -1,17 +1,15 @@
 Name:           mod_auth_cas
 Version:        1.0.9.1
-Release:        1%{?dist}
-Summary:        Apache 2.0/2.2 compliant module that supports the CASv1 and CASv2 protocols
+Release:        2%{?dist}
+Summary:        Apache 2.0/2.2/2.4 compliant module that supports the CASv1 and CASv2 protocols
 
 Group:          System Environment/Daemons
 License:        GPLv3+ with exceptions
 URL:            http://www.ja-sig.org/wiki/display/CASC/mod_auth_cas
-# The source for this package was pulled from the upstream's vcs. Their 
-# releases are stored in SVN instead of exported to a tar.gz, I used the 
-# following commands to do so:
-#  svn export https://source.jasig.org/cas-clients/mod_auth_cas/tags/mod_auth_cas-1.0.9.1 mod_auth_cas-1.0.9.1
+# The source for this package was pulled from a git repo that was forked
+# from Jasig's own repo. Releases are tagged on Github and are natively
+# downladable as .tar.gz archives.
 
-#  tar -czvf mod_auth_cas-1.0.9.1.tar.gz mod_auth_cas-1.0.9.1/
 Source0:        mod_auth_cas-1.0.9.1.tar.gz
 Source1:        auth_cas.conf
 
@@ -28,7 +26,7 @@ BuildRequires:  libcurl-devel
 Requires:       httpd
 
 %description
-mod_auth_cas is an Apache 2.0/2.2 compliant module that supports the CASv1
+mod_auth_cas is an Apache 2.0/2.2/2.4 compliant module that supports the CASv1
 and CASv2 protocols
 
 %prep
@@ -58,6 +56,9 @@ rm -rf %{buildroot}
 %config(noreplace) %{_sysconfdir}/httpd/conf.d/*.conf
 
 %changelog
+* Fri Feb 13 2015 Jonathan Gazeley <jonathan.gazeley@bristol.ac.uk> - 1.0.9.1-2
+- Rebuilt for EL7 using spec file from EPEL6 and fork of original code to support Apache 2.4
+
 * Thu Sep 19 2013 Scott Williams <vwbusguy@fedoraproject.org> - 1.0.9.1-1
 - Upgraded to 1.0.9.1 with patch for SSL CA Chains
 
