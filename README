@@ -187,6 +187,28 @@ compile and install:
 configure can take an optional --with-apxs=/path/to/apxs argument to
 specify the path to your APXS binary.
 
+PACKAGING INSTRUCTIONS
+--------------------------------------------------------------------
+This release of mod_auth_cas includes build files for Red Hat and compatible
+distributions. Assuming your build server is set up in the standard
+way, place the source tarball in ~/rpmbuild/SOURCES and also extract
+the contents of the redhat/ subdirectory into ~/rpmbuild/SOURCES. Then,
+issue the build command:
+
+rpmbuild -ba ~/rpmbuild/SPECS/mod_auth_cas.spec
+
+This should spit out a binary RPM for your distribution in:
+
+~/rpmbuild/RPMS/x86_64/mod_auth_cas-x.x.x-y.rpm
+
+and a source RPM in:
+
+~/rpmbuild/SRPMS/mod_auth_cas.x.x.x-y.src.rpm
+
+For more information about building RPM packages, please see:
+
+http://wiki.centos.org/HowTos/SetupRpmBuildEnvironment
+
 CONFIGURING THE SOFTWARE
 --------------------------------------------------------------------
 First, you must tell Apache to load the module.  In your httpd.conf,
